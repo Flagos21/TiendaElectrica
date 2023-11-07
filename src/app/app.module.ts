@@ -5,10 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { InventarioCreacionComponent } from './components/inventario-creacion/inventario-creacion.component';
+import { InventarioModificarComponent } from './components/inventario-modificar/inventario-modificar.component';
+import { InventarioComponent } from './components/inventario/inventario.component';
+import { VentaNuevaComponent } from './components/venta-nueva/venta-nueva.component';
+import { VentaRegistroComponent } from './components/venta-registro/venta-registro.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    InventarioCreacionComponent,
+    InventarioModificarComponent,
+    InventarioComponent,
+    VentaNuevaComponent,
+    VentaRegistroComponent
   ],
   imports: [
     BrowserModule,
