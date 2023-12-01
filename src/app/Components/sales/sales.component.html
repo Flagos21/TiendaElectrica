@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<section>
+<form class="form" [formGroup]="sales" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" class="form-control" formControlName="idClient" placeholder="idClient">
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="nameClient" placeholder="nameClient">
+    </div>
+    <div>
+        <input type="date" class="form-control" formControlName="date" placeholder="date">
+    </div>
+    <div>
+        <input type="number" class="form-control" formControlName="order" placeholder="order">
+
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="direction" placeholder="direction">
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="phone" placeholder="phone">
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="idVendor" placeholder="idVendor">
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="nameVendor" placeholder="nameVendor">
+    </div>
+    <div>
+        <input type="text" class="form-control" formControlName="nameProduct" placeholder="nameProduct">
+    </div>
+    <div>
+        <input type="number" class="form-control" formControlName="stockPSales" placeholder="stockPSales">
+    </div>
+    <div>
+        <input type="number" class="form-control" formControlName="discount" placeholder="discount">
+    </div>
+    <div>
+        <input type="number" class="form-control" formControlName="unitPrice" placeholder="unitPrice">
+    </div>
+    <div>
+        <input type="number" class="form-control" formControlName="totalPSales" placeholder="totalPSales">
+    </div>
+    <input type="submit" value="Enviar">
+</form>
+</section>

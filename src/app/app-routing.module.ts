@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { RegisterComponent } from './Components/register/register.component';
-import { LoginComponent } from './Components/login/login.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginRegisterComponent } from './Components/login-register/login-register.component';
+import { SalesComponent } from './Components/sales/sales.component';
+import { InventoryComponent } from './Components/inventory/inventory.component';
 
 const routes: Routes = [
 
@@ -13,12 +13,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    ...canActivate(() => redirectUnauthorizedTo(['/register']))
+    ...canActivate(() => redirectUnauthorizedTo(['/login-register']))
   },
-
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'login-register', component: LoginRegisterComponent}
+  
+  {path: 'login-register', component: LoginRegisterComponent},
+  {path: 'sales', component: SalesComponent},
+  {path: 'inventory', component: InventoryComponent}
 ];
 
 @NgModule({

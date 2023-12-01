@@ -1,0 +1,82 @@
+/* navbar.component.css */
+.menu-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  z-index: 2;
+  transition: left 0.3s;
+  background-color: transparent;
+  border-radius: 25%;
+}
+
+.menu-button mat-icon {
+  color: #000; /* Color negro para el ícono */
+}
+
+.menu-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Color de fondo al pasar el ratón (puedes ajustar la opacidad según tus preferencias) */
+}
+
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Color de fondo al pasar el ratón (puedes ajustar la opacidad según tus preferencias) */
+}
+
+.nav-bar {
+  margin-left: 10px;
+  height: 50px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.sidenav {
+  padding-left: 10px;
+  padding-top: 5px;
+  background-color: #FFDB58;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 90%;
+  transition: width 0.3s;
+  z-index: 2;
+}
+
+.sidenav-closed .menu-button {
+  left: -20px;
+  transition: left 0.3s;
+}
+
+mat-nav-list {
+  padding-top: 50px;
+}
+
+.logout-container {
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  text-align: center;
+  margin-top: 20px;
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
+
+.sidenav-closed .logout-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.logout-button {
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.logout-button:hover {
+  background-color: #FF0000;
+}

@@ -9,20 +9,4 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class HomeComponent {
 
-  constructor(
-    private userService: AuthService,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
-  }
-
-  onClick() {
-    this.userService.logout()
-      .then(() => {
-        this.router.navigate(['/register']);
-      })
-      .catch(error => console.log(error));
-  }
-
 }

@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+  
 })
 export class LoginComponent implements OnInit{
 

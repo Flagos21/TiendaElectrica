@@ -5,16 +5,10 @@ section {
     align-items: center;
     justify-content: center;
 }
-.homeimg{
+.form{
     position: absolute;
     z-index: 1;
     padding-left: 300px;
     width: 1450px;
     padding-top: 150px;
-}
-.sales {
-    padding-bottom: 550px;
-    padding-left: 300px;
-    font-size: 24px; /* Puedes ajustar el tamaño según tus necesidades */
-    font-weight: bold;
 }
