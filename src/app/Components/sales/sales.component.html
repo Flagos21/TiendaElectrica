@@ -1,46 +1,70 @@
 <app-navbar></app-navbar>
-<section>
-<form class="form" [formGroup]="sales" (ngSubmit)="onSubmit()">
-    <div>
-        <input type="text" class="form-control" formControlName="idClient" placeholder="idClient">
-    </div>
-    <div>
-        <input type="text" class="form-control" formControlName="nameClient" placeholder="nameClient">
-    </div>
-    <div>
-        <input type="date" class="form-control" formControlName="date" placeholder="date">
-    </div>
-    <div>
-        <input type="number" class="form-control" formControlName="order" placeholder="order">
 
+<section class="form-section">
+  <form class="form" [formGroup]="sales" (ngSubmit)="onSubmit()">
+    <div formArrayName="salesArray">
+      <div *ngFor="let sale of salesArrayControls; let i = index" class="form-row" [formGroupName]="i">
+        <div class="row">
+          <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="idClient" placeholder="ID Client">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="nameClient" placeholder="Name Client">
+          </div>
+          <div class="col-md-4">
+            <input type="date" class="form-control" formControlName="date" placeholder="Date">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input type="number" class="form-control" formControlName="order" placeholder="Order">
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="direction" placeholder="Direction">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="idVendor" placeholder="ID Vendor">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="nameVendor" placeholder="Name Vendor">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <input type="text" class="form-control" formControlName="nameProduct" placeholder="Name Product">
+          </div>
+          <div class="col-md-2">
+            <input type="number" class="form-control" formControlName="stockPSales" placeholder="Stock">
+          </div>
+          <div class="col-md-2">
+            <input type="number" class="form-control" formControlName="discount" placeholder="Discount">
+          </div>
+          <div class="col-md-2">
+            <input type="number" class="form-control" formControlName="unitPrice" placeholder="Unit Price">
+          </div>
+          <div class="col-md-3">
+            <input type="number" class="form-control" formControlName="totalPSales" placeholder="Total PSales">
+          </div>
+          <div class="col-md-1">
+            <button type="button" (click)="removeRow(i)" class="btn btn-danger">Remove</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <input type="text" class="form-control" formControlName="direction" placeholder="direction">
+
+    <div class="submit-button">
+      <button type="button" (click)="duplicateRow()" class="btn btn-success">Duplicate Row</button>
+      <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
-    <div>
-        <input type="text" class="form-control" formControlName="phone" placeholder="phone">
-    </div>
-    <div>
-        <input type="text" class="form-control" formControlName="idVendor" placeholder="idVendor">
-    </div>
-    <div>
-        <input type="text" class="form-control" formControlName="nameVendor" placeholder="nameVendor">
-    </div>
-    <div>
-        <input type="text" class="form-control" formControlName="nameProduct" placeholder="nameProduct">
-    </div>
-    <div>
-        <input type="number" class="form-control" formControlName="stockPSales" placeholder="stockPSales">
-    </div>
-    <div>
-        <input type="number" class="form-control" formControlName="discount" placeholder="discount">
-    </div>
-    <div>
-        <input type="number" class="form-control" formControlName="unitPrice" placeholder="unitPrice">
-    </div>
-    <div>
-        <input type="number" class="form-control" formControlName="totalPSales" placeholder="totalPSales">
-    </div>
-    <input type="submit" value="Enviar">
-</form>
+  </form>
 </section>
