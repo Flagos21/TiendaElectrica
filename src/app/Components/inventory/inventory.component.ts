@@ -8,15 +8,18 @@ import { Inventory } from 'src/app/Interfaces/interfaces';
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
-  styleUrls: ['./inventory.component.css'],
+  styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
+  
   inventory: FormGroup;
   inventoryData: Inventory[] = [];
-  selectedProduct: Inventory | null = null;
+  selectedProduct: Inventory | null = null; 
   editForm: FormGroup;
 
-  constructor(private collectionService: CollectionService) {
+  constructor(
+    private collectionService: CollectionService 
+  ) {
     this.inventory = new FormGroup({
       nameProduct: new FormControl('', Validators.required),
       description: new FormControl(''),
@@ -46,46 +49,32 @@ export class InventoryComponent implements OnInit {
     this.inventoryData = await this.collectionService.getAllInventory();
   }
 
-  async onSubmit() {
+  onSubmit() {
     if (this.inventory.valid) {
       const newProduct: Inventory = this.inventory.value;
-
-      try {
-        await this.collectionService.addInventory(newProduct);
-        console.log('Producto agregado exitosamente');
-        this.loadInventoryData();
-        this.inventory.reset();
-      } catch (error) {
-        console.error('Error al agregar el producto:', error);
-      }
+      this.collectionService.addInventory(newProduct)
+        .then(() => {
+          console.log('Producto agregado exitosamente');
+          this.loadInventoryData();
+          this.inventory.reset();
+        })
+        .catch(error => {
+          console.error('Error al agregar el producto:', error);
+        });
     }
   }
 
-  async editProduct(product: Inventory) {
-    // Obtener la UID del documento
-    const uid = product.idProduct;
-
-    if (uid) {
-      // Obtener el documento completo usando la UID
-      const updatedProduct = await this.collectionService.getInventoryByUid(uid);
-
-      if (updatedProduct) {
-        this.selectedProduct = updatedProduct;
-        this.editForm.setValue({
-          nameProduct: updatedProduct.nameProduct,
-          description: updatedProduct.description,
-          unitPrice: updatedProduct.unitPrice,
-          category: updatedProduct.category,
-          order: updatedProduct.order,
-          stock: updatedProduct.stock,
-          stockMinimun: updatedProduct.stockMinimun,
-        });
-      } else {
-        console.error('Error: No se encontró el producto con la UID proporcionada');
-      }
-    } else {
-      console.error('Error: idProduct es nulo o indefinido');
-    }
+  editProduct(product: Inventory) {
+    this.selectedProduct = product;
+    this.editForm.setValue({
+      nameProduct: product.nameProduct,
+      description: product.description,
+      unitPrice: product.unitPrice,
+      category: product.category,
+      order: product.order,
+      stock: product.stock,
+      stockMinimun: product.stockMinimun,
+    });
   }
 
   async saveEdit() {
@@ -95,11 +84,9 @@ export class InventoryComponent implements OnInit {
         ...this.editForm.value,
       };
 
+      // Verifica si idProduct es undefined antes de usarlo
       if (this.selectedProduct.idProduct !== undefined) {
-        await this.collectionService.updateInventory(
-          this.selectedProduct.idProduct,
-          updatedProduct
-        );
+        await this.collectionService.updateInventory(this.selectedProduct.idProduct, updatedProduct);
         await this.loadInventoryData();
         this.clearEditForm();
       } else {

@@ -3,58 +3,50 @@
 <section class="form-section">
   <form class="form" [formGroup]="sales" (ngSubmit)="onSubmit()">
     <div formArrayName="salesArray">
-      <div *ngFor="let sale of salesArrayControls; let i = index" class="form-row" [formGroupName]="i">
-        <div class="row">
-          <div class="col-md-4">
-            <input type="text" class="form-control" formControlName="idClient" placeholder="ID Client">
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control" formControlName="nameClient" placeholder="Name Client">
-          </div>
-          <div class="col-md-4">
-            <input type="date" class="form-control" formControlName="date" placeholder="Date">
-          </div>
+      <div *ngFor="let sale of salesArrayControls; let i = index" class="form" [formGroupName]="i">
+
+        <div class="fila1">
+          
+            <input type="text" class="form-control idclient" formControlName="idClient" placeholder="ID Client" >
+          
+          
+            <input type="text" class="form-control nameclient" formControlName="nameClient" placeholder="Name Client">
+          
+          
+            <input type="date" class="form-control date" formControlName="date" placeholder="Date">
+          
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <input type="number" class="form-control" formControlName="order" placeholder="Order">
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" formControlName="direction" placeholder="Direction">
-          </div>
+        <div class="fila2">
+          
+            <input type="number" class="form-control order" formControlName="order" placeholder="Order">
+          
+          
+            <input type="text" class="form-control direction" formControlName="direction" placeholder="Direction">
+          
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" formControlName="email" placeholder="Email">
-          </div>
+        <div class="fila3">
+          
+            <input type="text" class="form-control phone" formControlName="phone" placeholder="Phone">
+          
+          
+            <input type="text" class="form-control email" formControlName="email" placeholder="Email">
+          
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <input type="text" class="form-control" formControlName="idVendor" placeholder="ID Vendor">
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control" formControlName="nameVendor" placeholder="Name Vendor">
-          </div>
+        <div class="fila4">
+         
+            <input type="text" class="form-control idvendor" formControlName="idVendor" placeholder="ID Vendor">
+            <input type="text" class="form-control namevendor" formControlName="nameVendor" placeholder="Name Vendor">
+          
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <input type="text" class="form-control" formControlName="nameProduct" placeholder="Name Product">
-          </div>
-          <div class="col-md-2">
-            <input type="number" class="form-control" formControlName="stockPSales" placeholder="Stock">
-          </div>
-          <div class="col-md-2">
-            <input type="number" class="form-control" formControlName="discount" placeholder="Discount">
-          </div>
-          <div class="col-md-2">
-            <input type="number" class="form-control" formControlName="unitPrice" placeholder="Unit Price">
-          </div>
-          <div class="col-md-3">
+
+        <div class="fila5">
+          
+            <input type="text" class="form-control nameproduct" formControlName="nameProduct" placeholder="Name Product">
+            <input type="number" class="form-control stock" formControlName="stockPSales" placeholder="Stock">
+            <input type="number" class="form-control discount" formControlName="discount" placeholder="Discount">
+            <input type="number" class="form-control unitprice" formControlName="unitPrice" placeholder="Unit Price">
+          
             <input type="number" class="form-control" formControlName="totalPSales" placeholder="Total PSales">
-          </div>
           <div class="col-md-1">
             <button type="button" (click)="removeRow(i)" class="btn btn-danger">Remove</button>
           </div>
