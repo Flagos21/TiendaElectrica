@@ -17,6 +17,8 @@ export class InventoryComponent implements OnInit {
   selectedProduct: Inventory | null = null; 
   editForm: FormGroup;
 
+  mostrar: boolean=true;
+
   constructor(
     private collectionService: CollectionService 
   ) {
@@ -65,6 +67,7 @@ export class InventoryComponent implements OnInit {
   }
 
   editProduct(product: Inventory) {
+    this.change();
     this.selectedProduct = product;
     this.editForm.setValue({
       nameProduct: product.nameProduct,
@@ -78,6 +81,7 @@ export class InventoryComponent implements OnInit {
   }
 
   async saveEdit() {
+    this.change();
     if (this.selectedProduct) {
       const updatedProduct: Inventory = {
         ...this.selectedProduct,
@@ -99,4 +103,9 @@ export class InventoryComponent implements OnInit {
     this.selectedProduct = null;
     this.editForm.reset();
   }
+
+  change(){
+    this.mostrar = !this.mostrar
+  }
+
 }

@@ -1,0 +1,103 @@
+.tableproduct{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFDB58;
+}
+.table{
+    background-color: #FFFFFF;
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+
+}
+
+.main{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.seeproduct{
+    background-color: #D9D9D9;
+    padding-inline: 250px;
+    padding-block: 5px;
+    width: 5px;
+    height: 10px;
+}
+input{
+    width: 250px;
+    height: 25px;
+}
+
+.fila1,
+.fila2,
+.fila3,
+.fila4{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Estilo para todos los botones */
+button {
+    padding: 12px 20px; /* Ajusta según sea necesario */
+    font-size: 16px; /* Ajusta según sea necesario */
+    background-color: #808080; /* Color gris */
+    border: 2px solid #808080; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    color: #fff; /* Color del texto (blanco en este caso) */
+    cursor: pointer;
+  }
+  
+  /* Estilo para el botón de clase 'btn-success' (verde) */
+  .btn-success {
+    background-color: #32CD32; /* Cambia el color de fondo a verde */
+    border-color: #32CD32; /* Cambia el color del borde a verde */
+  }
+  
+  /* Estilo para el botón de clase 'btn-danger' (rojo) */
+  .btn-danger {
+    background-color: #FF6347; /* Cambia el color de fondo a rojo */
+    border-color: #FF6347; /* Cambia el color del borde a rojo */
+  }
+  
+  /* Estilo para el botón de clase 'btn-primary' (amarillo) */
+  .btn-primary {
+    background-color: #FFDB58; /* Cambia el color de fondo a amarillo */
+    border-color: #FFDB58; /* Cambia el color del borde a amarillo */
+  }
+  
+  /* Otros estilos específicos de botones según sea necesario */
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 1000px;
+    /* Adjust the max-width according to your needs */
+    padding: 20px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  h1{
+    display: flex;
+    justify-content: center;
+  }
+  .productosam{
+    justify-content: center;
+    align-items: center;
+  }

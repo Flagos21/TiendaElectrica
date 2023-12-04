@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 
 <section class="form-section">
-  <form class="form" [formGroup]="sales" (ngSubmit)="onSubmit()">
+  <form [formGroup]="sales" (ngSubmit)="onSubmit()">
     <div formArrayName="salesArray">
-      <div *ngFor="let sale of salesArrayControls; let i = index" class="form" [formGroupName]="i">
+      <div *ngFor="let sale of salesArrayControls; let i = index" [formGroupName]="i">
 
         <div class="fila1">
           
@@ -39,24 +39,29 @@
           
         </div>
 
-        <div class="fila5">
+        <div class="fila5" >
           
             <input type="text" class="form-control nameproduct" formControlName="nameProduct" placeholder="Name Product">
             <input type="number" class="form-control stock" formControlName="stockPSales" placeholder="Stock">
             <input type="number" class="form-control discount" formControlName="discount" placeholder="Discount">
             <input type="number" class="form-control unitprice" formControlName="unitPrice" placeholder="Unit Price">
+            <input type="number" class="form-control totalpsales" formControlName="totalPSales" placeholder="Total PSales">   
+            <button type="button" (click)="removeRow(i)" class="btn btn-danger remove">
+              <img src="../../assets/img/EliminarFactura.png" alt="Agregar" class="imgeliminar"/></button>
           
-            <input type="number" class="form-control" formControlName="totalPSales" placeholder="Total PSales">
-          <div class="col-md-1">
-            <button type="button" (click)="removeRow(i)" class="btn btn-danger">Remove</button>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="submit-button">
-      <button type="button" (click)="duplicateRow()" class="btn btn-success">Duplicate Row</button>
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="button" (click)="duplicateRow()" class="btn btn-success">
+        <img src="../../assets/img/Agregar.png" alt="Agregar" class="imgagregar"/>
+      </button> 
+      
+      
+    </div>
+    <div class="Enviar">
+      <button type="submit" class="btn btn-primary">SAVE</button>
     </div>
   </form>
 </section>

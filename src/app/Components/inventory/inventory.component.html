@@ -1,74 +1,101 @@
 <!-- inventory.component.html -->
-
+<section class="main">
 <app-navbar></app-navbar>
 
-<!-- Formulario de creación de producto -->
-<form [formGroup]="inventory" (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <input type="text" class="form-control" formControlName="nameProduct" placeholder="Nombre del Producto">
-  </div>
-  <div class="mb-3">
-    <textarea class="form-control" formControlName="description" placeholder="Descripción"></textarea>
-  </div>
-  <div class="mb-3">
-    <input type="number" class="form-control" formControlName="unitPrice" placeholder="Precio Unitario">
-  </div>
-  <div class="mb-3">
-    <input type="text" class="form-control" formControlName="category" placeholder="Categoría">
-  </div>
-  <div class="mb-3">
-    <input type="number" class="form-control" formControlName="order" placeholder="Orden">
-  </div>
-  <div class="mb-3">
-    <input type="number" class="form-control" formControlName="stock" placeholder="Stock">
-  </div>
-  <div class="mb-3">
-    <input type="number" class="form-control" formControlName="stockMinimun" placeholder="Stock Mínimo">
-  </div>
-  <input type="submit" value="Agregar Producto" class="btn btn-info">
-</form>
+  <!-- Formulario de creación de producto -->
+  <section *ngIf="this.mostrar" class="productosam">
+    <h1>AGREGAR PRODUCTOS</h1>
+    <form [formGroup]="inventory">
+      <div class="mb-3">
+        <div class="fila1">
+        
+          <input type="text" class="form-control" formControlName="nameProduct"
+            placeholder="Name Product">
+        
+      </div>
+        <div class="fila2">
+        
+           <input type="text" class="form-control" formControlName="description"
+            placeholder="description">
+        
+      </div>
+      <div class="fila3">
+        
+          <input type="text" class="form-control"  formControlName="order" placeholder="order">
+          <input type="text" class="form-control"  formControlName="category"
+            placeholder="category">
+        
+      </div>
+      <div class="fila4">
+        
+          <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+          <input type="text" class="form-control"  formControlName="stock" placeholder="stock">
+          <input type="text" class="form-control"  formControlName="stockMinimun"
+            placeholder="stockMinimun">
+        
+      </div>
+      </div>
+      <button type="button" (click)="onSubmit()" class="btn btn-success">Agregar</button>
+    </form>
+  </section>
 
-<!-- Tabla de productos -->
-<table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Nombre del Producto</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Order</th>
-      <th scope="col">Category</th>
-      <th scope="col">UnitPrice</th>
-      <th scope="col">Stock</th>
-      <th scope="col">Stock Minimun</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of inventoryData">
-      <td>{{ product.nameProduct }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.order }}</td>
-      <td>{{ product.category }}</td>
-      <td>{{ product.unitPrice }}</td>
-      <td>{{ product.stock }}</td>
-      <td>{{ product.stockMinimun }}</td>
-      <td>
-        <button (click)="editProduct(product)" class="btn btn-warning">Editar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Formulario de edición -->
+  
+  <section *ngIf="!this.mostrar" class="productosam">
+    <h1>MODIFICAR PRODUCTOS</h1>
+    <form [formGroup]="editForm">
+      <div class="mb-3">
+        <div class="fila1">
+        
+          <input type="text" class="form-control" formControlName="nameProduct"
+            placeholder="Name Product">
+        
+      </div>
+        <div class="fila2">
+        
+           <input type="text" class="form-control" formControlName="description"
+            placeholder="description">
+        
+      </div>
+      <div class="fila3">
+        
+          <input type="text" class="form-control"  formControlName="order" placeholder="order">
+          <input type="text" class="form-control"  formControlName="category"
+            placeholder="category">
+        
+      </div>
+      <div class="fila4">
+        
+          <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+          <input type="text" class="form-control"  formControlName="stock" placeholder="stock">
+          <input type="text" class="form-control"  formControlName="stockMinimun"
+            placeholder="stockMinimun">
+        
+      </div>
+      </div>
+      <!-- ... otros campos del formulario de edición -->
+      <button type="button" (click)="saveEdit()" class="btn btn-success">Guardar Cambios</button>
+    </form>
+  </section>
 
-<!-- Formulario de edición -->
-<form [formGroup]="editForm">
-  <div class="mb-3">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="nameProduct" placeholder="Name Product">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="description" placeholder="description">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="order" placeholder="order">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="category" placeholder="category">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="unitPrice" placeholder="unitPrice">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="stock" placeholder="stock">
-    <input type="text" class="form-control" id="nameProductEdit" formControlName="stockMinimun" placeholder="stockMinimun">
+
+
+  <!-- Tabla de productos -->
+
+  <section class="tableproduct">
+    <div class="table">
+    <table class="table mt-3">
+      <thead>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of inventoryData" >
+          <td class="seeproduct">{{ product.nameProduct }}</td>
+          <td>
+            <button (click)="editProduct(product)" class="btn btn-warning">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <!-- ... otros campos del formulario de edición -->
-  <button type="button" (click)="saveEdit()" class="btn btn-success">Guardar Cambios</button>
-</form>
+  </section>
+</section>
