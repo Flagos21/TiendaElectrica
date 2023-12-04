@@ -4,7 +4,7 @@
 
   <!-- Formulario de creación de producto -->
   <section *ngIf="this.mostrar" class="productosam">
-    <h1>AGREGAR PRODUCTOS</h1>
+    <h1>ADD PRODUCT</h1>
     <form [formGroup]="inventory">
       <div class="mb-3">
         <div class="fila1">
@@ -20,29 +20,29 @@
         
       </div>
       <div class="fila3">
-        
-          <input type="text" class="form-control"  formControlName="order" placeholder="order">
+        <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+          
           <input type="text" class="form-control"  formControlName="category"
             placeholder="category">
         
       </div>
       <div class="fila4">
         
-          <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+        <input type="text" class="form-control"  formControlName="order" placeholder="order">
           <input type="text" class="form-control"  formControlName="stock" placeholder="stock">
           <input type="text" class="form-control"  formControlName="stockMinimun"
             placeholder="stockMinimun">
         
       </div>
       </div>
-      <button type="button" (click)="onSubmit()" class="btn btn-success">Agregar</button>
+      <button type="button" (click)="onSubmit()" class="btn btn-success">ADD</button>
     </form>
   </section>
 
   <!-- Formulario de edición -->
   
   <section *ngIf="!this.mostrar" class="productosam">
-    <h1>MODIFICAR PRODUCTOS</h1>
+    <h1>MODIFY PRODUCT</h1>
     <form [formGroup]="editForm">
       <div class="mb-3">
         <div class="fila1">
@@ -58,15 +58,15 @@
         
       </div>
       <div class="fila3">
-        
-          <input type="text" class="form-control"  formControlName="order" placeholder="order">
+        <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+          
           <input type="text" class="form-control"  formControlName="category"
             placeholder="category">
         
       </div>
       <div class="fila4">
         
-          <input type="text" class="form-control"  formControlName="unitPrice" placeholder="unitPrice">
+        <input type="text" class="form-control"  formControlName="order" placeholder="order">
           <input type="text" class="form-control"  formControlName="stock" placeholder="stock">
           <input type="text" class="form-control"  formControlName="stockMinimun"
             placeholder="stockMinimun">
@@ -74,7 +74,7 @@
       </div>
       </div>
       <!-- ... otros campos del formulario de edición -->
-      <button type="button" (click)="saveEdit()" class="btn btn-success">Guardar Cambios</button>
+      <button type="button" (click)="saveEdit()" class="btn btn-success">SAVE</button>
     </form>
   </section>
 
@@ -84,14 +84,14 @@
 
   <section class="tableproduct">
     <div class="table">
-    <table class="table mt-3">
+    <table class="tableproductos">
       <thead>
       </thead>
       <tbody>
         <tr *ngFor="let product of inventoryData" >
           <td class="seeproduct">{{ product.nameProduct }}</td>
           <td>
-            <button (click)="editProduct(product)" class="btn btn-warning">Editar</button>
+            <button (click)="editProduct(product)" class="btn btn-warning"><img src="../../assets/img/Editar.png" alt="Agregar" class="imgagregar"/></button>
           </td>
         </tr>
       </tbody>
