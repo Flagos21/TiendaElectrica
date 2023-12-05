@@ -35,7 +35,9 @@
         
       </div>
       </div>
+      <div class="ModificarEliminar">
       <button type="button" (click)="onSubmit()" class="btn btn-success">ADD</button>
+      </div>
     </form>
   </section>
 
@@ -73,8 +75,10 @@
         
       </div>
       </div>
-      <!-- ... otros campos del formulario de edición -->
+      <div class="ModificarEliminar">
+      <button type="button" (click)="deleteProduct()" class="btn btn-danger">DELETE</button>
       <button type="button" (click)="saveEdit()" class="btn btn-success">SAVE</button>
+      </div>
     </form>
   </section>
 

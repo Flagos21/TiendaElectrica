@@ -19,13 +19,17 @@
     width: 100%;
     justify-content: space-between;
 }
+.ModificarEliminar{
+  display: flex;
+  justify-content: center;
+}
 
 .seeproduct{
     background-color: transparent;
     border: 1px solid #ced4da; /* Borde */
     padding-inline: 250px;
     padding-block: 5px;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: bold;
 }
 input{
@@ -123,9 +127,5 @@ button {
     justify-content: center;
 }
 
-.btn-success {
-    width: 100%;
-    margin-top: 100px;
-}
 
 /* Puedes agregar estilos adicionales según sea necesario */

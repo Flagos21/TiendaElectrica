@@ -98,6 +98,22 @@ export class InventoryComponent implements OnInit {
       }
     }
   }
+// Dentro de la clase InventoryComponent
+deleteProduct() {
+  this.change();
+  if (this.selectedProduct && this.selectedProduct.idProduct !== undefined) {
+      this.collectionService.deleteInventory(this.selectedProduct.idProduct)
+        .then(() => {
+          console.log('Producto eliminado exitosamente');
+          this.loadInventoryData();
+          this.clearEditForm();
+        })
+        .catch(error => {
+          console.error('Error al eliminar el producto:', error);
+        });
+    }
+  }
+
 
   clearEditForm() {
     this.selectedProduct = null;

@@ -12,6 +12,7 @@ import {
   DocumentData,
   where,
   query,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { Inventory, Sales } from '../Interfaces/interfaces';
 
@@ -25,12 +26,10 @@ export class CollectionService {
   async addInventory(inventory: Inventory): Promise<void> {
     const collectionRef = collection(this.firestore, 'inventory');
 
-    // Agregar el documento sin proporcionar el idProduct (Firebase generará uno automáticamente)
     const docRef = await addDoc(collectionRef, { ...inventory });
 
-    // Obtener la uid generada por Firebase y actualizar el documento con esa uid como idProduct
     const uid = docRef.id;
-    const inventoryRef = doc(this.firestore, 'inventory', uid);  // Cambio aquí
+    const inventoryRef = doc(this.firestore, 'inventory', uid);
     await updateDoc(inventoryRef, 'idProduct', uid);
   }
 
@@ -49,7 +48,6 @@ export class CollectionService {
     if (productId) {
       const inventoryRef = doc(this.firestore, 'inventory', productId);
 
-      // Verificar la existencia del documento antes de intentar la actualización
       const docSnapshot = await getDoc(inventoryRef);
       if (docSnapshot.exists()) {
         const updatedInventoryData: DocumentData = {
@@ -57,10 +55,22 @@ export class CollectionService {
           idProduct: updatedData.idProduct || '',
         };
 
-        // Realizar la actualización
         await updateDoc(inventoryRef, updatedInventoryData);
       } else {
         console.warn('El documento no existe. No se realizará ninguna actualización.');
+      }
+    }
+  }
+
+  async deleteInventory(productId: string | undefined): Promise<void> {
+    if (productId) {
+      const inventoryRef = doc(this.firestore, 'inventory', productId);
+
+      const docSnapshot = await getDoc(inventoryRef);
+      if (docSnapshot.exists()) {
+        await deleteDoc(inventoryRef);
+      } else {
+        console.warn('El documento no existe. No se realizará ninguna eliminación.');
       }
     }
   }
